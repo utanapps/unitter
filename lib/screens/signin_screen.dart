@@ -1,0 +1,156 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../components/custom_text_field.dart';
+import '../components/language_dropdown.dart';
+import '../generated/l10n.dart';
+import '../providers/supabase_provider.dart';
+import '../utils/validators.dart';
+import 'home_screen.dart';
+import 'signup_screen.dart';
+import 'otp_verification_screen.dart';
+import 'password_reset_screen.dart';
+import 'package:unitter/utils/utils.dart'; // ユーティリティクラスをインポート
+
+class SigninScreen extends ConsumerStatefulWidget {
+  const SigninScreen({super.key});
+
+  @override
+  _SigninScreenState createState() => _SigninScreenState();
+}
+
+class _SigninScreenState extends ConsumerState<SigninScreen> {
+  // final supabase = Supabase.instance.client;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  void _signin() async {
+    if (!_formKey.currentState!.validate()) {
+      return; // フォームが無効の場合は処理を中断
+    }
+    final email = _emailController.text.trim();
+    final password = _passwordController.text;
+
+    try {
+      final supabaseService = ref.read(supabaseServiceProvider);
+
+      final res = await supabaseService.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      if (res.session != null) {
+        final user = supabaseService.getCurrentUser();
+        if (user != null && user.emailConfirmedAt != null) {
+          // ホーム画面へ遷移
+          if (mounted) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+              (_) => false,
+            );
+          }
+        } else {
+          // OTP認証画面へ遷移
+          if (mounted) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OtpVerificationScreen(email: email),
+              ),
+            );
+          }
+        }
+      }
+    } on AuthException catch (e) {
+      if (e.message == 'Email not confirmed') {
+        // OTP認証画面へ遷移
+        if (mounted) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OtpVerificationScreen(email: email),
+            ),
+          );
+        }
+      } else if(e.message == 'Invalid login credentials') {
+        Utils.showMessageBottomSheet(context, S.of(context).error, S.of(context).loginErrorMessage);
+
+      }else {
+        print(e);
+        // その他のエラーハンドリング
+          Utils.showMessageBottomSheet(context, S.of(context).error, e.message);
+      }
+    } catch (e) {
+      // その他のエラーハンドリング
+        Utils.showMessageBottomSheet(context, S.of(context).error, S.of(context).error);
+    }
+  }
+
+  void _navigateToSignup() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SignupScreen()),
+    );
+  }
+
+  void _navigateToPasswordReset() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PasswordResetScreen(isFromSignin: true),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(S.of(context).signIn),
+            actions: const [
+              LanguageDropdown(),
+            ],
+
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Column(children: [
+              CustomTextField(
+                controller:  _emailController,
+                label: S.of(context).email,
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  return validateEmail(
+                    value,
+                    S.of(context).invalidEmailFormat,
+                    S.of(context).enterEmail,
+                  );
+                },
+              ),
+              CustomTextField(
+                controller: _passwordController,
+                label: S.of(context).password,
+                keyboardType: TextInputType.visiblePassword,
+                isPassword: true,
+                validator: (value) {
+                  return validateSimplePassword(
+                    value,
+                    S.of(context).enterPassword,
+                  );
+                },
+              ),
+              ElevatedButton(onPressed: _signin, child:  Text(S.of(context).signIn)),
+              TextButton(
+                  onPressed: _navigateToSignup, child:  Text(S.of(context).signUp)),
+              TextButton(
+                  onPressed: _navigateToPasswordReset,
+                  child: Text(S.of(context).forgotPassword)),
+            ]),
+          ),
+        ));
+  }
+}
