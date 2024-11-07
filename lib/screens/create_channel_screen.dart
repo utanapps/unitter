@@ -162,66 +162,69 @@ class _CreateChannelScreenState extends ConsumerState<CreateChannelScreen> {
   }
 
   Widget _buildImagePickerSection() {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 1,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                width: double.infinity,
-                height: 200,
-                alignment: Alignment.center,
-                child: selectedImageData != null
-                    ? Image.memory(selectedImageData!, width: 200, height: 200, fit: BoxFit.cover)
-                    : Image.asset('assets/images/default_avatar2.png', width: 200, height: 200, fit: BoxFit.cover),
+    return Container(
+      width: double.infinity,
+      child: Card(
+        color: Colors.deepPurpleAccent,// 幅を画面いっぱいに設定
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 1,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              CircleAvatar(
+                radius: 75, // 必要に応じてサイズを調整
+                backgroundImage: selectedImageData != null
+                    ? MemoryImage(selectedImageData!)
+                    : AssetImage('assets/images/default_avatar2.png') as ImageProvider,
+                backgroundColor: Colors.transparent,
               ),
-            ),
-            const SizedBox(height: 8),
-            ImagePickerWidget(
-              onImageSelected: (Uint8List imageData, String fileName) {
-                setState(() {
-                  selectedImageData = imageData;
-                  selectedFileName = fileName;
-                });
-              },
-              buttonText: S.of(context).selectImageButtonText,
-              purpose: 'chat',
-            ),
-          ],
+              const SizedBox(height: 8),
+              ImagePickerWidget(
+                onImageSelected: (Uint8List imageData, String fileName) {
+                  setState(() {
+                    selectedImageData = imageData;
+                    selectedFileName = fileName;
+                  });
+                },
+                buttonText: S.of(context).selectImageButtonText,
+                purpose: 'chat',
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildTextInputSection() {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 1,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: channelController,
-              decoration: InputDecoration(
-                hintText: S.of(context).channelNameLabel,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+    return Container(
+      width: double.infinity, // 幅を画面いっぱいに設定
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 1,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: channelController,
+                decoration: InputDecoration(
+                  hintText: S.of(context).channelNameLabel,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: descriptionController,
-              maxLines: 3,
-              decoration: InputDecoration(
-                hintText: S.of(context).channelDescriptionLabel,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              const SizedBox(height: 16),
+              TextField(
+                controller: descriptionController,
+                maxLines: 3,
+                decoration: InputDecoration(
+                  hintText: S.of(context).channelDescriptionLabel,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
