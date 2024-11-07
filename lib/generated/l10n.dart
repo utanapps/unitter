@@ -2029,6 +2029,1496 @@ class S {
       args: [],
     );
   }
+
+  /// `Bio`
+  String get bio {
+    return Intl.message(
+      'Bio',
+      name: 'bio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unfollowed`
+  String get unfollowed {
+    return Intl.message(
+      'Unfollowed',
+      name: 'unfollowed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No followers yet`
+  String get noFollowersYet {
+    return Intl.message(
+      'No followers yet',
+      name: 'noFollowersYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Followed`
+  String get followed {
+    return Intl.message(
+      'Followed',
+      name: 'followed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Following Users`
+  String get followingUsers {
+    return Intl.message(
+      'Following Users',
+      name: 'followingUsers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Users`
+  String get allUsers {
+    return Intl.message(
+      'All Users',
+      name: 'allUsers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SMS Signup`
+  String get smsSignup {
+    return Intl.message(
+      'SMS Signup',
+      name: 'smsSignup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify Phone`
+  String get verifyPhone {
+    return Intl.message(
+      'Verify Phone',
+      name: 'verifyPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the verification code.`
+  String get enterOtp {
+    return Intl.message(
+      'Please enter the verification code.',
+      name: 'enterOtp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification Code`
+  String get otp {
+    return Intl.message(
+      'Verification Code',
+      name: 'otp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification successful!`
+  String get verificationSuccess {
+    return Intl.message(
+      'Verification successful!',
+      name: 'verificationSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification failed. Please try again.`
+  String get verificationFailed {
+    return Intl.message(
+      'Verification failed. Please try again.',
+      name: 'verificationFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your phone number.`
+  String get enterPhoneNumber {
+    return Intl.message(
+      'Please enter your phone number.',
+      name: 'enterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid phone number format.`
+  String get invalidPhoneNumber {
+    return Intl.message(
+      'Invalid phone number format.',
+      name: 'invalidPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid OTP format.`
+  String get invalidOtp {
+    return Intl.message(
+      'Invalid OTP format.',
+      name: 'invalidOtp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Code`
+  String get sendCode {
+    return Intl.message(
+      'Send Code',
+      name: 'sendCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code Sent`
+  String get codeSentTitle {
+    return Intl.message(
+      'Code Sent',
+      name: 'codeSentTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A verification code has been sent to your phone.`
+  String get codeSentMessage {
+    return Intl.message(
+      'A verification code has been sent to your phone.',
+      name: 'codeSentMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your phone for the verification code.`
+  String get codeSentInfo {
+    return Intl.message(
+      'Please check your phone for the verification code.',
+      name: 'codeSentInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify Code`
+  String get verifyCode {
+    return Intl.message(
+      'Verify Code',
+      name: 'verifyCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to the Home Screen!`
+  String get welcomeHome {
+    return Intl.message(
+      'Welcome to the Home Screen!',
+      name: 'welcomeHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred. Please try again.`
+  String get errorOccurred {
+    return Intl.message(
+      'An error occurred. Please try again.',
+      name: 'errorOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `+81 90-1234-5678`
+  String get phoneNumberHint {
+    return Intl.message(
+      '+81 90-1234-5678',
+      name: 'phoneNumberHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP verification failed. Please try again.`
+  String get otpVerificationFailedMessage {
+    return Intl.message(
+      'OTP verification failed. Please try again.',
+      name: 'otpVerificationFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to update username. Please try again.`
+  String get usernameUpdateFailedMessage {
+    return Intl.message(
+      'Failed to update username. Please try again.',
+      name: 'usernameUpdateFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Channel`
+  String get channelCreationTitle {
+    return Intl.message(
+      'Create Channel',
+      name: 'channelCreationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Channel Name`
+  String get channelNameLabel {
+    return Intl.message(
+      'Enter Channel Name',
+      name: 'channelNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Channel Description`
+  String get channelDescriptionLabel {
+    return Intl.message(
+      'Enter Channel Description',
+      name: 'channelDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Category`
+  String get selectCategoryLabel {
+    return Intl.message(
+      'Select Category',
+      name: 'selectCategoryLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Prefecture`
+  String get selectPrefectureLabel {
+    return Intl.message(
+      'Select Prefecture',
+      name: 'selectPrefectureLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Channel Image`
+  String get selectChannelImageLabel {
+    return Intl.message(
+      'Select Channel Image',
+      name: 'selectChannelImageLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A channel with the same name already exists`
+  String get channelNameExistsMessage {
+    return Intl.message(
+      'A channel with the same name already exists',
+      name: 'channelNameExistsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creating Channel...`
+  String get channelCreationInProgressMessage {
+    return Intl.message(
+      'Creating Channel...',
+      name: 'channelCreationInProgressMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a category`
+  String get categoryNotSelectedMessage {
+    return Intl.message(
+      'Please select a category',
+      name: 'categoryNotSelectedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a prefecture`
+  String get prefectureNotSelectedMessage {
+    return Intl.message(
+      'Please select a prefecture',
+      name: 'prefectureNotSelectedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Channel created successfully`
+  String get channelCreationSuccessMessage {
+    return Intl.message(
+      'Channel created successfully',
+      name: 'channelCreationSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to create channel`
+  String get channelCreationFailureMessage {
+    return Intl.message(
+      'Failed to create channel',
+      name: 'channelCreationFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to fetch categories`
+  String get categoryFetchFailureMessage {
+    return Intl.message(
+      'Failed to fetch categories',
+      name: 'categoryFetchFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Channel updated successfully`
+  String get channelUpdateSuccessMessage {
+    return Intl.message(
+      'Channel updated successfully',
+      name: 'channelUpdateSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to update channel`
+  String get channelUpdateFailureMessage {
+    return Intl.message(
+      'Failed to update channel',
+      name: 'channelUpdateFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Channel`
+  String get channelDeleteTitle {
+    return Intl.message(
+      'Delete Channel',
+      name: 'channelDeleteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this channel? This action cannot be undone.`
+  String get channelDeleteConfirmation {
+    return Intl.message(
+      'Are you sure you want to delete this channel? This action cannot be undone.',
+      name: 'channelDeleteConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelLabel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get deleteLabel {
+    return Intl.message(
+      'Delete',
+      name: 'deleteLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Channel deleted successfully`
+  String get channelDeleteSuccessMessage {
+    return Intl.message(
+      'Channel deleted successfully',
+      name: 'channelDeleteSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete channel`
+  String get channelDeleteFailureMessage {
+    return Intl.message(
+      'Failed to delete channel',
+      name: 'channelDeleteFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Channel`
+  String get editChannelTitle {
+    return Intl.message(
+      'Edit Channel',
+      name: 'editChannelTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to fetch channel information`
+  String get channelFetchFailureMessage {
+    return Intl.message(
+      'Failed to fetch channel information',
+      name: 'channelFetchFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to fetch prefectures`
+  String get prefectureFetchFailureMessage {
+    return Intl.message(
+      'Failed to fetch prefectures',
+      name: 'prefectureFetchFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter channel name`
+  String get channelNameInputLabel {
+    return Intl.message(
+      'Enter channel name',
+      name: 'channelNameInputLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter channel description`
+  String get channelDescriptionInputLabel {
+    return Intl.message(
+      'Enter channel description',
+      name: 'channelDescriptionInputLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Channel`
+  String get updateChannelButtonLabel {
+    return Intl.message(
+      'Update Channel',
+      name: 'updateChannelButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Channel`
+  String get deleteChannelButtonLabel {
+    return Intl.message(
+      'Delete Channel',
+      name: 'deleteChannelButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'s Profile`
+  String get profileTitle {
+    return Intl.message(
+      '\'s Profile',
+      name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error fetching profile information`
+  String get profileFetchError {
+    return Intl.message(
+      'Error fetching profile information',
+      name: 'profileFetchError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error fetching friend request status`
+  String get friendRequestStatusError {
+    return Intl.message(
+      'Error fetching friend request status',
+      name: 'friendRequestStatusError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error fetching follow status`
+  String get followStatusError {
+    return Intl.message(
+      'Error fetching follow status',
+      name: 'followStatusError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No bio available`
+  String get noBioMessage {
+    return Intl.message(
+      'No bio available',
+      name: 'noBioMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Followed successfully`
+  String get followSuccessMessage {
+    return Intl.message(
+      'Followed successfully',
+      name: 'followSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unfollowed successfully`
+  String get unfollowSuccessMessage {
+    return Intl.message(
+      'Unfollowed successfully',
+      name: 'unfollowSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow`
+  String get followButton {
+    return Intl.message(
+      'Follow',
+      name: 'followButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unfollow`
+  String get unfollowButton {
+    return Intl.message(
+      'Unfollow',
+      name: 'unfollowButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to retrieve user information`
+  String get userFetchErrorMessage {
+    return Intl.message(
+      'Failed to retrieve user information',
+      name: 'userFetchErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Map`
+  String get mapScreenTitle {
+    return Intl.message(
+      'Map',
+      name: 'mapScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to update position`
+  String get positionUpdateError {
+    return Intl.message(
+      'Failed to update position',
+      name: 'positionUpdateError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location services are disabled.`
+  String get locationServiceDisabled {
+    return Intl.message(
+      'Location services are disabled.',
+      name: 'locationServiceDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission was denied.`
+  String get locationPermissionDenied {
+    return Intl.message(
+      'Location permission was denied.',
+      name: 'locationPermissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission is permanently denied.`
+  String get locationPermissionPermanentlyDenied {
+    return Intl.message(
+      'Location permission is permanently denied.',
+      name: 'locationPermissionPermanentlyDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Null latitude or longitude for user {0}`
+  String get nullLatLngError {
+    return Intl.message(
+      'Null latitude or longitude for user {0}',
+      name: 'nullLatLngError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error occurred while subscribing to location updates`
+  String get locationSubscriptionError {
+    return Intl.message(
+      'Error occurred while subscribing to location updates',
+      name: 'locationSubscriptionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password Reset`
+  String get passwordResetTitle {
+    return Intl.message(
+      'Password Reset',
+      name: 'passwordResetTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code sent.`
+  String get otpSentMessage {
+    return Intl.message(
+      'Verification code sent.',
+      name: 'otpSentMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the verification code sent to your email`
+  String get enterOtpMessage {
+    return Intl.message(
+      'Please enter the verification code sent to your email',
+      name: 'enterOtpMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sending verification code for password change`
+  String get sendOtpInstruction {
+    return Intl.message(
+      'Sending verification code for password change',
+      name: 'sendOtpInstruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred`
+  String get generalErrorMessage {
+    return Intl.message(
+      'An error occurred',
+      name: 'generalErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to initialize chat.`
+  String get chatInitError {
+    return Intl.message(
+      'Failed to initialize chat.',
+      name: 'chatInitError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading messages.`
+  String get messageLoadError {
+    return Intl.message(
+      'Error loading messages.',
+      name: 'messageLoadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading more messages before`
+  String get loadingMoreMessages {
+    return Intl.message(
+      'Loading more messages before',
+      name: 'loadingMoreMessages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loaded {0} older messages.`
+  String get loadedOlderMessages {
+    return Intl.message(
+      'Loaded {0} older messages.',
+      name: 'loadedOlderMessages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No more messages to load.`
+  String get noMoreMessages {
+    return Intl.message(
+      'No more messages to load.',
+      name: 'noMoreMessages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error uploading image.`
+  String get imageUploadError {
+    return Intl.message(
+      'Error uploading image.',
+      name: 'imageUploadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to send message.`
+  String get messageSendError {
+    return Intl.message(
+      'Failed to send message.',
+      name: 'messageSendError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan QR Code`
+  String get scanQrCodeTitle {
+    return Intl.message(
+      'Scan QR Code',
+      name: 'scanQrCodeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelButtonLabel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Friend added successfully!`
+  String get friendAddedMessage {
+    return Intl.message(
+      'Friend added successfully!',
+      name: 'friendAddedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred while scanning`
+  String get scanErrorMessage {
+    return Intl.message(
+      'An error occurred while scanning',
+      name: 'scanErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image uploaded successfully`
+  String get imageUploadSuccess {
+    return Intl.message(
+      'Image uploaded successfully',
+      name: 'imageUploadSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bio updated successfully`
+  String get bioUpdateSuccess {
+    return Intl.message(
+      'Bio updated successfully',
+      name: 'bioUpdateSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to update bio`
+  String get bioUpdateError {
+    return Intl.message(
+      'Failed to update bio',
+      name: 'bioUpdateError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User is not logged in`
+  String get userNotLoggedIn {
+    return Intl.message(
+      'User is not logged in',
+      name: 'userNotLoggedIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by channel name`
+  String get searchByChannelName {
+    return Intl.message(
+      'Search by channel name',
+      name: 'searchByChannelName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Prefectures`
+  String get allPrefectures {
+    return Intl.message(
+      'All Prefectures',
+      name: 'allPrefectures',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by Prefecture`
+  String get searchByPrefecture {
+    return Intl.message(
+      'Search by Prefecture',
+      name: 'searchByPrefecture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to fetch prefectures`
+  String get prefectureFetchError {
+    return Intl.message(
+      'Failed to fetch prefectures',
+      name: 'prefectureFetchError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to fetch channels`
+  String get fetchChannelsError {
+    return Intl.message(
+      'Failed to fetch channels',
+      name: 'fetchChannelsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No channels found`
+  String get noChannelsFound {
+    return Intl.message(
+      'No channels found',
+      name: 'noChannelsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Product`
+  String get createProductTitle {
+    return Intl.message(
+      'Create Product',
+      name: 'createProductTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Name`
+  String get productNameLabel {
+    return Intl.message(
+      'Product Name',
+      name: 'productNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Description`
+  String get productDescriptionLabel {
+    return Intl.message(
+      'Product Description',
+      name: 'productDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get productPriceLabel {
+    return Intl.message(
+      'Price',
+      name: 'productPriceLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Images`
+  String get selectImagesButtonText {
+    return Intl.message(
+      'Select Images',
+      name: 'selectImagesButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to upload image`
+  String get imageUploadFailedMessage {
+    return Intl.message(
+      'Failed to upload image',
+      name: 'imageUploadFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product created successfully`
+  String get productCreationSuccessMessage {
+    return Intl.message(
+      'Product created successfully',
+      name: 'productCreationSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to create product`
+  String get productCreationFailureMessage {
+    return Intl.message(
+      'Failed to create product',
+      name: 'productCreationFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Product`
+  String get createProductButtonText {
+    return Intl.message(
+      'Create Product',
+      name: 'createProductButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User is not logged in`
+  String get userNotLoggedInMessage {
+    return Intl.message(
+      'User is not logged in',
+      name: 'userNotLoggedInMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No favorite channels`
+  String get noFavoriteChannelsMessage {
+    return Intl.message(
+      'No favorite channels',
+      name: 'noFavoriteChannelsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboardTitle {
+    return Intl.message(
+      'Dashboard',
+      name: 'dashboardTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not logged in`
+  String get notLoggedInMessage {
+    return Intl.message(
+      'Not logged in',
+      name: 'notLoggedInMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get userProfileTitle {
+    return Intl.message(
+      'Profile',
+      name: 'userProfileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please set a username`
+  String get usernameSettingTitle {
+    return Intl.message(
+      'Please set a username',
+      name: 'usernameSettingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get usernameLabel {
+    return Intl.message(
+      'Username',
+      name: 'usernameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get saveButtonText {
+    return Intl.message(
+      'Save',
+      name: 'saveButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Karma`
+  String get karmaLabel {
+    return Intl.message(
+      'Karma',
+      name: 'karmaLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `QR Code`
+  String get qrCodeLabel {
+    return Intl.message(
+      'QR Code',
+      name: 'qrCodeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Channel`
+  String get createChannelButtonText {
+    return Intl.message(
+      'Create Channel',
+      name: 'createChannelButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Channels You Own`
+  String get ownedChannelsTitle {
+    return Intl.message(
+      'Channels You Own',
+      name: 'ownedChannelsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get channelEditButtonText {
+    return Intl.message(
+      'Edit',
+      name: 'channelEditButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading profile information`
+  String get errorLoadingProfileMessage {
+    return Intl.message(
+      'Error loading profile information',
+      name: 'errorLoadingProfileMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading channels`
+  String get errorLoadingChannelsMessage {
+    return Intl.message(
+      'Error loading channels',
+      name: 'errorLoadingChannelsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Username`
+  String get setUsernameTitle {
+    return Intl.message(
+      'Set Username',
+      name: 'setUsernameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred`
+  String get errorOccurredMessage {
+    return Intl.message(
+      'An error occurred',
+      name: 'errorOccurredMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Channels`
+  String get yourChannelsLabel {
+    return Intl.message(
+      'Your Channels',
+      name: 'yourChannelsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fetching title...`
+  String get fetchingTitleMessage {
+    return Intl.message(
+      'Fetching title...',
+      name: 'fetchingTitleMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not fetch preview`
+  String get linkPreviewError {
+    return Intl.message(
+      'Could not fetch preview',
+      name: 'linkPreviewError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the channel name`
+  String get enterChannelNameHint {
+    return Intl.message(
+      'Enter the channel name',
+      name: 'enterChannelNameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a brief description`
+  String get enterChannelDescriptionHint {
+    return Intl.message(
+      'Enter a brief description',
+      name: 'enterChannelDescriptionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Image`
+  String get selectImageButtonText {
+    return Intl.message(
+      'Choose Image',
+      name: 'selectImageButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `投票リスト`
+  String get pollListLabel {
+    return Intl.message(
+      '投票リスト',
+      name: 'pollListLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `投票を作成`
+  String get createPollButtonText {
+    return Intl.message(
+      '投票を作成',
+      name: 'createPollButtonText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Mode`
+  String get editMode {
+    return Intl.message(
+      'Edit Mode',
+      name: 'editMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message(
+      'Loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get status {
+    return Intl.message(
+      'Status',
+      name: 'status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available`
+  String get available {
+    return Intl.message(
+      'Available',
+      name: 'available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a price`
+  String get enterPrice {
+    return Intl.message(
+      'Please enter a price',
+      name: 'enterPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid price`
+  String get invalidPrice {
+    return Intl.message(
+      'Please enter a valid price',
+      name: 'invalidPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post updated successfully`
+  String get postUpdated {
+    return Intl.message(
+      'Post updated successfully',
+      name: 'postUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to update`
+  String get updateFailed {
+    return Intl.message(
+      'Failed to update',
+      name: 'updateFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike`
+  String get categoryBike {
+    return Intl.message(
+      'Bike',
+      name: 'categoryBike',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bicycle`
+  String get categoryBicycle {
+    return Intl.message(
+      'Bicycle',
+      name: 'categoryBicycle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wear`
+  String get categoryWear {
+    return Intl.message(
+      'Wear',
+      name: 'categoryWear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery Related`
+  String get categoryDeliveryRelated {
+    return Intl.message(
+      'Delivery Related',
+      name: 'categoryDeliveryRelated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get categoryOther {
+    return Intl.message(
+      'Other',
+      name: 'categoryOther',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a price.`
+  String get priceRequiredMessage {
+    return Intl.message(
+      'Please enter a price.',
+      name: 'priceRequiredMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid number for the price.`
+  String get invalidPriceMessage {
+    return Intl.message(
+      'Please enter a valid number for the price.',
+      name: 'invalidPriceMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

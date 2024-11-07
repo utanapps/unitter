@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:unitter/screens/sms_signup_screen.dart';
+import '../components/custom_snack_bar.dart';
 import '../components/custom_text_field.dart';
 import '../components/language_dropdown.dart';
 import '../generated/l10n.dart';
@@ -10,7 +12,6 @@ import 'home_screen.dart';
 import 'signup_screen.dart';
 import 'otp_verification_screen.dart';
 import 'password_reset_screen.dart';
-import 'package:unitter/utils/utils.dart'; // ユーティリティクラスをインポート
 
 class SigninScreen extends ConsumerStatefulWidget {
   const SigninScreen({super.key});
@@ -75,16 +76,23 @@ class _SigninScreenState extends ConsumerState<SigninScreen> {
           );
         }
       } else if(e.message == 'Invalid login credentials') {
-        Utils.showMessageBottomSheet(context, S.of(context).error, S.of(context).loginErrorMessage);
+        CustomSnackBar.show(
+          ScaffoldMessenger.of(context),
+          S.of(context).loginErrorMessage,
+        );
 
       }else {
-        print(e);
-        // その他のエラーハンドリング
-          Utils.showMessageBottomSheet(context, S.of(context).error, e.message);
+        CustomSnackBar.show(
+          ScaffoldMessenger.of(context),
+          S.of(context).error,
+        );        // その他のエラーハンドリング
       }
     } catch (e) {
       // その他のエラーハンドリング
-        Utils.showMessageBottomSheet(context, S.of(context).error, S.of(context).error);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).error,
+      );
     }
   }
 
@@ -92,6 +100,12 @@ class _SigninScreenState extends ConsumerState<SigninScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const SignupScreen()),
+    );
+  }
+  void _navigateToSmaSignup() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SmsSignupScreen()),
     );
   }
 
@@ -146,6 +160,8 @@ class _SigninScreenState extends ConsumerState<SigninScreen> {
               ElevatedButton(onPressed: _signin, child:  Text(S.of(context).signIn)),
               TextButton(
                   onPressed: _navigateToSignup, child:  Text(S.of(context).signUp)),
+              TextButton(
+                  onPressed: _navigateToSmaSignup, child:  Text(S.of(context).smsSignup)),
               TextButton(
                   onPressed: _navigateToPasswordReset,
                   child: Text(S.of(context).forgotPassword)),

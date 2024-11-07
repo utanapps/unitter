@@ -9,7 +9,9 @@ import 'package:unitter/screens/signin_screen.dart';
 
 import '../providers/font_size_provider.dart';
 import '../services/supabase_service.dart';
-// import 'package:unitter/pages/edit_profile.dart';
+import 'package:unitter/screens/edit_profile_screen.dart';
+
+import 'edit_email_screen.dart';
 // import 'package:unitter/pages/password_reset_page.dart';
 // import 'package:unitter/pages/change_email_page.dart';
 // import 'package:unitter/pages/delete_user.dart';
@@ -99,29 +101,18 @@ class SettingScreenState extends ConsumerState<SettingScreen> {
             ),
             leading: const Icon(Icons.text_fields),
           ),
-          // ListTile(
-          //   title: Text(S.of(context).profile),
-          //   subtitle: Text(S.of(context).profileDescription),
-          //   leading: const Icon(Icons.person),
-          //   onTap: () {
-          //     Navigator.of(context).push(
-          //       MaterialPageRoute(
-          //         builder: (context) => const EditProfile(), // ChatPageはチャット画面のクラス
-          //       ),
-          //     );
-          //   },
-          // ),
-          // ListTile(
-          //   title: Text(S.of(context).email),
-          //   subtitle: Text(S.of(context).emailChange),
-          //   leading: const Icon(Icons.email),
-          //   onTap: () {
-          //     // Navigator.of(context).pop(); // ドロワーを閉じる
-          //     Navigator.of(context).push(
-          //       MaterialPageRoute(builder: (context) => const ChangeEmailPage()),
-          //     );
-          //   },
-          // ),
+          ListTile(
+            title: Text(S.of(context).profile),
+            subtitle: Text(S.of(context).profileDescription),
+            leading: const Icon(Icons.person),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const EditProfileScreen(), // ChatPageはチャット画面のクラス
+                ),
+              );
+            },
+          ),
           ListTile(
             title: Text(S.of(context).password),
             subtitle: Text(S.of(context).passwordChange),
@@ -130,6 +121,17 @@ class SettingScreenState extends ConsumerState<SettingScreen> {
               // Navigator.of(context).pop(); // ドロワーを閉じる
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const PasswordResetScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text(S.of(context).email),
+            subtitle: Text(S.of(context).emailChange),
+            leading: const Icon(Icons.email),
+            onTap: () {
+              // Navigator.of(context).pop(); // ドロワーを閉じる
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const EditEmailScreen()),
               );
             },
           ),

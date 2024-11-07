@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../components/custom_snack_bar.dart';
 import '../components/custom_text_field.dart';
 import '../generated/l10n.dart';
 import '../utils/utils.dart';
@@ -30,18 +31,16 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
     // バリデーションチェック
     if (!_validateEmail(email)) {
-      Utils.showMessageBottomSheet(
-        context,
-        S.of(context).invalidEmailTitle,
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
         S.of(context).invalidEmailMessage,
       );
       return;
     }
 
     if (!_validatePassword(password)) {
-      Utils.showMessageBottomSheet(
-        context,
-        S.of(context).invalidPasswordTitle,
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
         S.of(context).invalidPasswordMessage,
       );
       return;
@@ -62,9 +61,15 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         ),
       );
     } on AuthException catch (e) {
-      Utils.showMessageBottomSheet(context, S.of(context).error, e.message);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).error,
+      );
     } catch (e) {
-      Utils.showMessageBottomSheet(context, S.of(context).error, S.of(context).error);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).error,
+      );
     }
   }
 

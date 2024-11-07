@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpodのインポートを追加
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../components/custom_snack_bar.dart';
 import '../generated/l10n.dart';
 import '../providers/supabase_provider.dart'; // プロバイダーのインポートを追加
 import '../services/supabase_service.dart';
-import 'home_screen.dart';
+import 'dashboard_screen.dart';
 import '../components/custom_text_field.dart';
 import '../utils/utils.dart';
 import '../utils/validators.dart'; // サービスをインポート
@@ -50,22 +51,27 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
         if (mounted) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomeScreen()),
+            MaterialPageRoute(builder: (context) => DashBoardScreen()),
                 (_) => false,
           );
         }
       } else {
-        Utils.showMessageBottomSheet(
-          context,
-          S.of(context).errorLabel,
+        CustomSnackBar.show(
+          ScaffoldMessenger.of(context),
           S.of(context).failedAuthentication,
         );
       }
     } on AuthException catch (e) {
-      Utils.showMessageBottomSheet(context, S.of(context).errorLabel, e.message);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).error,
+      );
     } catch (e) {
       // その他のエラーハンドリング
-      Utils.showMessageBottomSheet(context, S.of(context).errorLabel, S.of(context).error);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).error,
+      );
     }
   }
 
@@ -78,10 +84,15 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
         type: OtpType.signup,
         email: widget.email,
       );
-      Utils.showMessageBottomSheet(context, S.of(context).successLabel, S.of(context).sendVerificationCode);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).sendVerificationCode,
+      );
     } catch (e) {
-      print(e);
-      Utils.showMessageBottomSheet(context, S.of(context).errorLabel, S.of(context).error);
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).error,
+      );
     } finally {
       setState(() {
         _isResending = false;

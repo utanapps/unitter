@@ -8,12 +8,15 @@ import 'package:unitter/providers/locale_provider.dart';
 import 'package:unitter/providers/theme_mode_provider.dart';
 import 'package:unitter/services/user_preferences.dart';
 import 'package:unitter/utils/constants.dart';
+import 'package:unitter/utils/timeago_en_short.dart';
 import 'generated/l10n.dart';
 import 'screens/signin_screen.dart';
 import 'screens/home_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 void main() async {
+
   await dotenv.load();
   final supabaseUrl = dotenv.env['SUPABASE_URL'];
   final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
@@ -23,6 +26,8 @@ void main() async {
     anonKey:supabaseAnonKey!,
   );
   await UserPreferences.init(); // SharedPreferencesを初期化
+  timeago.setLocaleMessages('en_short', EnShortMessages());
+  timeago.setDefaultLocale('en_short');
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -32,7 +37,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(localeProvider);
-    final themeMode = ref.watch(themeModeProvider);//
+    final themeMode = ref.watch(themeModeProvider);
     final fontSize = ref.watch(fontSizeProvider);//
 
     return MaterialApp(
@@ -53,7 +58,7 @@ class MyApp extends ConsumerWidget {
           seedColor: seedColor,
           brightness: Brightness.light,
         ),
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme( // Remove const here to allow dynamic properties
         ),
         textTheme: TextTheme(
           bodyLarge: TextStyle(fontSize: fontSize), // 元のフォントサイズ
@@ -63,14 +68,17 @@ class MyApp extends ConsumerWidget {
         ),
       ).copyWith(
         appBarTheme:  AppBarTheme(
-          backgroundColor: Color(0xff3fc060), // AppBarの背景色
-          foregroundColor: Colors.white, // AppBarのテキストやアイコンの色
-          iconTheme: IconThemeData(color: Colors.white), // AppBarのアイコンの色
+          elevation: 4.0, // Shadow height
+          shadowColor: Colors.black.withOpacity(0.5), // Shadow c
+          backgroundColor: Colors.white, // AppBarの背景色
+          foregroundColor: Colors.black, // AppBarのテキストやアイコンの色
+          iconTheme: IconThemeData(color: Colors.black), // AppBarのアイコンの色
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          elevation: 4.0, // Shadow height
           selectedLabelStyle: TextStyle(fontSize: fontSize), // フォントサイズ適用
           unselectedLabelStyle: TextStyle(fontSize: fontSize), // フォントサイズ適用
-          backgroundColor: Color(0xff3fc060), // BottomNavigationBarの背景色
+          // backgroundColor: Color(0xff3fc060), // BottomNavigationBarの背景色
           selectedItemColor: Colors.black87, // 選択されたアイテムのラベルの色
           unselectedItemColor: Colors.black87, // 非選択アイテムのラベルの色
         ),
@@ -82,6 +90,8 @@ class MyApp extends ConsumerWidget {
           seedColor: seedColor,
           brightness: Brightness.dark,
         ),
+        appBarTheme: AppBarTheme( // Remove const here to allow dynamic properties
+        ),
         textTheme: TextTheme(
           bodyLarge: TextStyle(fontSize: fontSize), // 元のフォントサイズ
           bodyMedium: TextStyle(fontSize: fontSize * 0.9), // 10%小さい
@@ -89,16 +99,16 @@ class MyApp extends ConsumerWidget {
           // その他のTextスタイルも必要に応じて設定可能
         ),
       ).copyWith(
-        appBarTheme: const AppBarTheme(
+        appBarTheme:  AppBarTheme(
 
-          backgroundColor: Color(0xff3fc060), // AppBarの背景色
-          foregroundColor: Color(0xff221f24), // AppBarのテキストやアイコンの色
+          backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest, // AppBarの背景色
+          foregroundColor: Colors.black54, // AppBarのテキストやアイコンの色
           iconTheme: IconThemeData(color: Colors.white), // AppBarのアイコンの色
         ),
         bottomNavigationBarTheme:  BottomNavigationBarThemeData(
           selectedLabelStyle: TextStyle(fontSize: fontSize), // フォントサイズ適用
           unselectedLabelStyle: TextStyle(fontSize: fontSize), // フォントサイズ適用
-          backgroundColor: Color(0xff3fc060), // BottomNavigationBarの背景色
+          // backgroundColor: Color(0xff3fc060), // BottomNavigationBarの背景色
           selectedItemColor: Colors.black87, // 選択されたアイテムのラベルの色
           unselectedItemColor: Colors.black87, // 非選択アイテムのラベルの色
         ),
