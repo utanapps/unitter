@@ -29,7 +29,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
   @override
   void initState() {
     super.initState();
-    supabaseService = ref.read(supabaseServiceProvider); // プロバイダーからSupabaseServiceを取得
+    supabaseService = ref.read(supabaseServiceProvider);
   }
 
   void _verifyOtp() async {
@@ -46,31 +46,26 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
         token: otp,
       );
 
-      if (res.session != null) {
-        // ホーム画面へ遷移
-        if (mounted) {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => DashBoardScreen()),
-                (_) => false,
-          );
-        }
-      } else {
-        CustomSnackBar.show(
-          ScaffoldMessenger.of(context),
-          S.of(context).failedAuthentication,
-        );
-      }
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => DashBoardScreen()),
+        (_) => false,
+      );
+      CustomSnackBar.show(
+        ScaffoldMessenger.of(context),
+        S.of(context).verificationSuccess,
+      );
     } on AuthException catch (e) {
       CustomSnackBar.show(
         ScaffoldMessenger.of(context),
-        S.of(context).error,
+        S.of(context).verificationFailed,
       );
     } catch (e) {
+      print(e);
       // その他のエラーハンドリング
       CustomSnackBar.show(
         ScaffoldMessenger.of(context),
-        S.of(context).error,
+        S.of(context).verificationFailed,
       );
     }
   }

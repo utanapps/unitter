@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unitter/screens/poll_list_screen.dart';
 import 'package:unitter/screens/scan_qr_code.dart';
+import 'package:unitter/screens/signin_screen.dart';
 import 'package:unitter/services/supabase_service.dart';
 import '../providers/supabase_provider.dart';
 import 'channel_search_screen.dart';
@@ -32,6 +33,17 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
     supabaseService = ref.read(supabaseServiceProvider);
     final user = supabaseService.getCurrentUser();
+
+    if (user != null) {
+      supabaseService.setUserToProvider(user.id, ref);
+    } else {
+      // Delay navigation until after the first frame is rendered
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const SigninScreen()),
+        );
+      });
+    }
     supabaseService.setUserToProvider(user!.id, ref);
   }
 

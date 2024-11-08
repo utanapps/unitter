@@ -298,6 +298,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "newChatList": MessageLookupByLibrary.simpleMessage("チャット"),
         "newEmail": MessageLookupByLibrary.simpleMessage("新しいメールアドレスを入力"),
         "newPassword": MessageLookupByLibrary.simpleMessage("新しいパスワードを入力"),
+        "newPasswordSameAsOld": MessageLookupByLibrary.simpleMessage(
+            "新しいパスワードは以前のパスワードと異なる必要があります。"),
         "noBioMessage": MessageLookupByLibrary.simpleMessage("自己紹介がありません"),
         "noChannelsFound":
             MessageLookupByLibrary.simpleMessage("チャンネルが見つかりません"),

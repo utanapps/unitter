@@ -4,7 +4,7 @@ class CustomSnackBar {
   static void show(ScaffoldMessengerState scaffoldMessenger, String message, {Color? backgroundColor}) {
     scaffoldMessenger.showSnackBar(
       SnackBar(
-        duration: const Duration(seconds: 60),
+        duration: const Duration(seconds: 4),
         content: Text(
           message,
         ),

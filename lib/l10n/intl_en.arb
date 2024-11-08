@@ -355,7 +355,6 @@
   "categoryDeliveryRelated": "Delivery Related",
   "categoryOther": "Other",
   "priceRequiredMessage": "Please enter a price.",
-  "invalidPriceMessage": "Please enter a valid number for the price."
-
-
+  "invalidPriceMessage": "Please enter a valid number for the price.",
+  "newPasswordSameAsOld": "New password should be different from the old password."
 }

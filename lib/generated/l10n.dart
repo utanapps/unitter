@@ -3519,6 +3519,16 @@ class S {
       args: [],
     );
   }
+
+  /// `New password should be different from the old password.`
+  String get newPasswordSameAsOld {
+    return Intl.message(
+      'New password should be different from the old password.',
+      name: 'newPasswordSameAsOld',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -338,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "newEmail": MessageLookupByLibrary.simpleMessage("new email"),
         "newPassword":
             MessageLookupByLibrary.simpleMessage("Enter new password"),
+        "newPasswordSameAsOld": MessageLookupByLibrary.simpleMessage(
+            "New password should be different from the old password."),
         "noBioMessage":
             MessageLookupByLibrary.simpleMessage("No bio available"),
         "noChannelsFound":

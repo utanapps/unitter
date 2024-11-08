@@ -344,6 +344,7 @@
   "categoryDeliveryRelated": "配達関連商品",
   "categoryOther": "その他",
   "priceRequiredMessage": "価格を入力してください。",
-  "invalidPriceMessage": "価格に有効な数値を入力してください。"
+  "invalidPriceMessage": "価格に有効な数値を入力してください。",
+  "newPasswordSameAsOld": "新しいパスワードは以前のパスワードと異なる必要があります。"
 }
 
