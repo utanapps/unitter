@@ -1,7 +1,10 @@
 // lib/screens/otp_verification_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart'; // Riverpodのインポートを追加
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../components/custom_appbar.dart';
+import '../components/custom_button.dart';
 import '../components/custom_snack_bar.dart';
 import '../generated/l10n.dart';
 import '../providers/supabase_provider.dart'; // プロバイダーのインポートを追加
@@ -9,7 +12,8 @@ import '../services/supabase_service.dart';
 import 'dashboard_screen.dart';
 import '../components/custom_text_field.dart';
 import '../utils/utils.dart';
-import '../utils/validators.dart'; // サービスをインポート
+import '../utils/validators.dart';
+import 'home_screen.dart'; // サービスをインポート
 
 class OtpVerificationScreen extends ConsumerStatefulWidget {
   final String email;
@@ -48,7 +52,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
 
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => DashBoardScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreen()),
         (_) => false,
       );
       CustomSnackBar.show(
@@ -98,41 +102,75 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).verificationTitle),
-        automaticallyImplyLeading: false, // 戻るボタンを非表示にする
+      appBar: CustomAppBar(
+        title: S.of(context).verificationTitle, // タイトル
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Text('${S.of(context).enterCodeMessage} ${widget.email}'),
-              CustomTextField(
-                controller: _otpController,
-                label: S.of(context).otpLabel,
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  return validateOtp(
-                    value,
-                    S.of(context).enterVerificationCode,
-                  );
-                },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  SizedBox(height: 50,),
+                  Text('${S.of(context).enterCodeMessage}'),
+                  SizedBox(height: 20,),
+        
+                  Text('${widget.email}'),
+        
+                  SizedBox(height: 20,),
+        
+                  PinCodeTextField(
+                    appContext: context,
+                    length: 6,
+                    controller: _otpController,
+                    keyboardType: TextInputType.number,
+                    autoDismissKeyboard: true,
+                    autoFocus: true,
+                    animationType: AnimationType.fade,
+                    pinTheme: PinTheme(
+                      fieldOuterPadding: EdgeInsets.all(0),
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(5),
+                      fieldHeight: 50,
+                      fieldWidth: 40,
+                      activeFillColor: Colors.white,
+                    ),
+                    onChanged: (value) {},
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return S.of(context).enterOtp;
+                      }
+                      if (value.length != 6) {
+                        return S.of(context).invalidOtp;
+                      }
+                      if (!RegExp(r'^\d{6}$').hasMatch(value)) {
+                        return S.of(context).invalidOtp;
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  CustomButton(
+                    text: S.of(context).verifyButton,
+                    onPressed: () => _verifyOtp(),
+                  ),
+                  const SizedBox(height: 6),
+                  CustomButton(
+                    text: S.of(context).resendOtpButton,
+                    onPressed: () =>  _resendOtp(),
+                  ),
+                  // ElevatedButton(
+                  //   onPressed: _isResending ? null : _resendOtp,
+                  //   child: _isResending
+                  //       ? CircularProgressIndicator()
+                  //       : Text(S.of(context).resendOtpButton),
+                  // ),
+                ],
               ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _verifyOtp,
-                child: Text(S.of(context).verifyButton),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _isResending ? null : _resendOtp,
-                child: _isResending
-                    ? CircularProgressIndicator()
-                    : Text(S.of(context).resendOtpButton),
-              ),
-            ],
+            ),
           ),
         ),
       ),

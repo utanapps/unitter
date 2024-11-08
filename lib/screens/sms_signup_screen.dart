@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import '../components/custom_appbar.dart';
+import '../components/custom_button.dart';
 import '../utils/utils.dart';
 import '../generated/l10n.dart';
 import 'sms_otp_verification_screen.dart';
@@ -92,72 +94,77 @@ class _SmsSignupScreenState extends State<SmsSignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).smsSignup),
+      appBar: CustomAppBar(
+        title: S.of(context).smsSignup, // タイトル
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(16, 50, 16, 50),
         child: _codeSent
             ? Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              S.of(context).codeSentInfo,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _navigateToSmsOtpVerification,
-              child: Text(S.of(context).verifyCode),
-            ),
-          ],
-        )
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height:16),
+                  Text(
+                    S.of(context).codeSentInfo,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 20),
+                  CustomButton(
+                    text: S.of(context).verifyCode,
+                    onPressed: () => _navigateToSmsOtpVerification(),
+                  ),
+                ],
+              )
             : Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              InternationalPhoneNumberInput(
-                onInputChanged: (PhoneNumber number) {
-                  _phoneNumber = number;
-                },
-                onInputValidated: (bool value) {
-                  // バリデーション結果に応じて処理を行う場合
-                },
-                selectorConfig: const SelectorConfig(
-                  selectorType: PhoneInputSelectorType.DROPDOWN,
-                  useEmoji: true,
+                key: _formKey,
+                child: Column(
+                  children: [
+                    InternationalPhoneNumberInput(
+                      onInputChanged: (PhoneNumber number) {
+                        _phoneNumber = number;
+                      },
+                      onInputValidated: (bool value) {
+                        // バリデーション結果に応じて処理を行う場合
+                      },
+                      selectorConfig: const SelectorConfig(
+                        selectorType: PhoneInputSelectorType.DROPDOWN,
+                        useEmoji: true,
+                      ),
+                      ignoreBlank: false,
+                      autoValidateMode: AutovalidateMode.onUserInteraction,
+                      selectorTextStyle: const TextStyle(color: Colors.black),
+                      initialValue: PhoneNumber(isoCode: 'JP'),
+                      textFieldController: _phoneController,
+                      formatInput: true,
+                      keyboardType: const TextInputType.numberWithOptions(
+                          signed: true, decimal: true),
+                      inputBorder: const OutlineInputBorder(),
+                      onSaved: (PhoneNumber number) {
+                        _phoneNumber = number;
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return S.of(context).enterPhoneNumber;
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    CustomButton(
+                      text: S.of(context).sendCode,
+                      onPressed: () => _signupWithPhone(),
+                    ),
+                    // ElevatedButton(
+                    //   onPressed: _isLoading ? null : _signupWithPhone,
+                    //   child: _isLoading
+                    //       ? const CircularProgressIndicator(
+                    //           color: Colors.white,
+                    //         )
+                    //       : Text(S.of(context).sendCode),
+                    // ),
+                  ],
                 ),
-                ignoreBlank: false,
-                autoValidateMode: AutovalidateMode.onUserInteraction,
-                selectorTextStyle: const TextStyle(color: Colors.black),
-                initialValue: PhoneNumber(isoCode: 'JP'),
-                textFieldController: _phoneController,
-                formatInput: true,
-                keyboardType:
-                const TextInputType.numberWithOptions(signed: true, decimal: true),
-                inputBorder: const OutlineInputBorder(),
-                onSaved: (PhoneNumber number) {
-                  _phoneNumber = number;
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return S.of(context).enterPhoneNumber;
-                  }
-                  return null;
-                },
               ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _isLoading ? null : _signupWithPhone,
-                child: _isLoading
-                    ? const CircularProgressIndicator(
-                  color: Colors.white,
-                )
-                    : Text(S.of(context).sendCode),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

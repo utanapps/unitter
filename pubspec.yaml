@@ -94,6 +94,7 @@ flutter:
     - assets/images/default_avatar2.png  #   - images/a_dot_ham.jpeg
     - assets/images/gray.png  #   - images/a_dot_ham.jpeg
     - assets/images/noimage.webp  #   - images/a_dot_ham.jpeg
+    - assets/images/animals.webp  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

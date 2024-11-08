@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../components/custom_appbar.dart';
+import '../components/custom_button.dart';
 import '../components/custom_snack_bar.dart';
 import '../components/custom_text_field.dart';
 import '../generated/l10n.dart';
@@ -21,8 +23,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-
   void _signup() async {
+    print(111);
     if (!_formKey.currentState!.validate()) {
       return; // フォームが無効の場合は処理を中断
     }
@@ -48,10 +50,13 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
     try {
       // ユーザーをサインアップ
-       await supabase.auth.signUp(
+      final res = await supabase.auth.signUp(
         email: email,
         password: password,
       );
+
+      print(res.session);
+      print(res.user);
 
       // OTP認証画面へ遷移
       Navigator.push(
@@ -61,11 +66,14 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         ),
       );
     } on AuthException catch (e) {
+      print(e);
       CustomSnackBar.show(
         ScaffoldMessenger.of(context),
         S.of(context).error,
       );
     } catch (e) {
+      print(e);
+
       CustomSnackBar.show(
         ScaffoldMessenger.of(context),
         S.of(context).error,
@@ -90,49 +98,51 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).signUp),
+      appBar: CustomAppBar(
+        title: S.of(context).signUp, // タイトル
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              CustomTextField(
-                controller:  _emailController,
-                label: S.of(context).email,
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  return validateEmail(
-                    value,
-                    S.of(context).invalidEmailFormat,
-                    S.of(context).enterEmail,
-                  );
-                },
-              ),
-              CustomTextField(
-                controller: _passwordController,
-                label: S.of(context).password,
-                keyboardType: TextInputType.visiblePassword,
-                isPassword: true,
-                validator: (value) {
-                  return validatePassword(
-                    value,
-                    S.of(context).enterPassword,
-                    S.of(context).passwordTooShort,
-                    S.of(context).passwordNeedsUppercase,
-                    S.of(context).passwordNeedsLowercase,
-                    S.of(context).passwordNeedsNumber,
-                    S.of(context).passwordNeedsSpecialCharacter,
-                  );
-                },
-              ),
-              ElevatedButton(
-                onPressed: _signup,
-                child: Text(S.of(context).signUp),
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CustomTextField(
+                  controller: _emailController,
+                  label: S.of(context).email,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    return validateEmail(
+                      value,
+                      S.of(context).invalidEmailFormat,
+                      S.of(context).enterEmail,
+                    );
+                  },
+                ),
+                CustomTextField(
+                  controller: _passwordController,
+                  label: S.of(context).password,
+                  keyboardType: TextInputType.visiblePassword,
+                  isPassword: true,
+                  validator: (value) {
+                    return validatePassword(
+                      value,
+                      S.of(context).enterPassword,
+                      S.of(context).passwordTooShort,
+                      S.of(context).passwordNeedsUppercase,
+                      S.of(context).passwordNeedsLowercase,
+                      S.of(context).passwordNeedsNumber,
+                      S.of(context).passwordNeedsSpecialCharacter,
+                    );
+                  },
+                ),
+                CustomButton(
+                  text: S.of(context).signUp,
+                  onPressed: () => _signup(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

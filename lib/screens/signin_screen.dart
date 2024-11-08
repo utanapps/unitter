@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:unitter/screens/sms_signup_screen.dart';
+import '../components/custom_appbar.dart';
+import '../components/custom_button.dart';
 import '../components/custom_snack_bar.dart';
 import '../components/custom_text_field.dart';
 import '../components/language_dropdown.dart';
@@ -75,17 +77,16 @@ class _SigninScreenState extends ConsumerState<SigninScreen> {
             ),
           );
         }
-      } else if(e.message == 'Invalid login credentials') {
+      } else if (e.message == 'Invalid login credentials') {
         CustomSnackBar.show(
           ScaffoldMessenger.of(context),
           S.of(context).loginErrorMessage,
         );
-
-      }else {
+      } else {
         CustomSnackBar.show(
           ScaffoldMessenger.of(context),
           S.of(context).error,
-        );        // その他のエラーハンドリング
+        ); // その他のエラーハンドリング
       }
     } catch (e) {
       // その他のエラーハンドリング
@@ -102,6 +103,7 @@ class _SigninScreenState extends ConsumerState<SigninScreen> {
       MaterialPageRoute(builder: (context) => const SignupScreen()),
     );
   }
+
   void _navigateToSmaSignup() {
     Navigator.push(
       context,
@@ -121,51 +123,55 @@ class _SigninScreenState extends ConsumerState<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(S.of(context).signIn),
-            actions: const [
-              LanguageDropdown(),
-            ],
-
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(children: [
-              CustomTextField(
-                controller:  _emailController,
-                label: S.of(context).email,
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  return validateEmail(
-                    value,
-                    S.of(context).invalidEmailFormat,
-                    S.of(context).enterEmail,
-                  );
-                },
-              ),
-              CustomTextField(
-                controller: _passwordController,
-                label: S.of(context).password,
-                keyboardType: TextInputType.visiblePassword,
-                isPassword: true,
-                validator: (value) {
-                  return validateSimplePassword(
-                    value,
-                    S.of(context).enterPassword,
-                  );
-                },
-              ),
-              ElevatedButton(onPressed: _signin, child:  Text(S.of(context).signIn)),
-              TextButton(
-                  onPressed: _navigateToSignup, child:  Text(S.of(context).signUp)),
-              TextButton(
-                  onPressed: _navigateToSmaSignup, child:  Text(S.of(context).smsSignup)),
-              TextButton(
-                  onPressed: _navigateToPasswordReset,
-                  child: Text(S.of(context).forgotPassword)),
-            ]),
+        // appBar: CustomAppBar(
+        //   title: S.of(context).signIn, // タイトル
+        // ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 100, 16, 0),
+            child: Form(
+              key: _formKey,
+              child: Column(children: [
+                Image.asset('assets/images/animals.webp',width: 350,),
+                CustomTextField(
+                  controller: _emailController,
+                  label: S.of(context).email,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    return validateEmail(
+                      value,
+                      S.of(context).invalidEmailFormat,
+                      S.of(context).enterEmail,
+                    );
+                  },
+                ),
+                CustomTextField(
+                  controller: _passwordController,
+                  label: S.of(context).password,
+                  keyboardType: TextInputType.visiblePassword,
+                  isPassword: true,
+                  validator: (value) {
+                    return validateSimplePassword(
+                      value,
+                      S.of(context).enterPassword,
+                    );
+                  },
+                ),
+                CustomButton(
+                  text: S.of(context).signIn,
+                  onPressed: () => _signin(),
+                ),
+                TextButton(
+                    onPressed: _navigateToSignup,
+                    child: Text(S.of(context).signUp)),
+                TextButton(
+                    onPressed: _navigateToSmaSignup,
+                    child: Text(S.of(context).smsSignup)),
+                TextButton(
+                    onPressed: _navigateToPasswordReset,
+                    child: Text(S.of(context).forgotPassword)),
+              ]),
+            ),
           ),
         ));
   }

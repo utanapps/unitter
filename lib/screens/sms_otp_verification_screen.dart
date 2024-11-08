@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../components/custom_appbar.dart';
+import '../components/custom_button.dart';
 import '../utils/utils.dart';
 import '../generated/l10n.dart';
 import 'home_screen.dart';
@@ -75,8 +77,8 @@ class _SmsOtpVerificationScreenState extends State<SmsOtpVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).verifyPhone),
+      appBar: CustomAppBar(
+        title: S.of(context).verifyPhone, // タイトル
       ),
       body: Padding(
         padding: const EdgeInsets.all(50.0),
@@ -84,6 +86,8 @@ class _SmsOtpVerificationScreenState extends State<SmsOtpVerificationScreen> {
           key: _formKey,
           child: Column(
             children: [
+              SizedBox(height:16),
+
               Text(
                 S.of(context).enterOtp,
                 style: const TextStyle(fontSize: 16),
@@ -120,14 +124,18 @@ class _SmsOtpVerificationScreenState extends State<SmsOtpVerificationScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _isLoading ? null : _verifyOtp,
-                child: _isLoading
-                    ? const CircularProgressIndicator(
-                  color: Colors.white,
-                )
-                    : Text(S.of(context).verify),
+              CustomButton(
+                text: S.of(context).verify,
+                onPressed: () =>  _isLoading ? null : _verifyOtp,
               ),
+              // ElevatedButton(
+              //   onPressed: _isLoading ? null : _verifyOtp,
+              //   child: _isLoading
+              //       ? const CircularProgressIndicator(
+              //     color: Colors.white,
+              //   )
+              //       : Text(S.of(context).verify),
+              // ),
             ],
           ),
         ),

@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../components/custom_appbar.dart';
+import '../components/custom_button.dart';
 import '../components/custom_snack_bar.dart';
 import '../components/custom_text_field.dart';
 import '../generated/l10n.dart';
@@ -136,8 +138,8 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).passwordResetTitle),
+      appBar: CustomAppBar(
+        title: S.of(context).passwordResetTitle, // タイトル
       ),
       body: Padding(
         padding: const EdgeInsets.all(40.0),
@@ -193,19 +195,16 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
                   },
                 ),
                 const SizedBox(height: 40.0),
-                ElevatedButton(
-                  onPressed: _verifyOtpAndUpdatePassword,
-                  child: Text(S.of(context).updatePasswordButton),
+                CustomButton(
+                  text: S.of(context).updatePasswordButton,
+                  onPressed: () => _verifyOtpAndUpdatePassword(),
                 ),
                 // 再送信ボタンの追加
                 if (_isResendVisible) ...[
                   const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _sendOtp,
-                    child: Text(S.of(context).resendOtpButton),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey, // ボタンの色を変更
-                    ),
+                  CustomButton(
+                    text: S.of(context).resendOtpButton,
+                    onPressed: () => _sendOtp(),
                   ),
                 ],
               ],
@@ -237,9 +236,9 @@ class _PasswordResetScreenState extends ConsumerState<PasswordResetScreen> {
                   ),
                   const SizedBox(height: 40.0),
                 ],
-                ElevatedButton(
-                  onPressed: _sendOtp,
-                  child: Text(S.of(context).sendOtpButton),
+                CustomButton(
+                  text: S.of(context).sendOtpButton,
+                  onPressed: () => _sendOtp(),
                 ),
               ],
             ),
